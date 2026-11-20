@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" data-theme="purple" data-mode="auto">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -11,6 +11,7 @@
 <meta name="apple-mobile-web-app-title" content="紫八匯">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>紫八匯 Purple Pillars</title>
+<script>(function(){try{var p=JSON.parse(localStorage.getItem('zw.prefs')||'{}'),d=document.documentElement;if(/^(gray|blue|purple|green|yellow)$/.test(p.theme))d.setAttribute('data-theme',p.theme);if(/^(auto|light|dark)$/.test(p.mode))d.setAttribute('data-mode',p.mode);}catch(e){}})();</script>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="icons/icon-192.png" type="image/png" sizes="192x192">
@@ -171,12 +172,6 @@ body{background:#fff;font-size:12px}
 
 /* ===== 紫八匯：配色、分頁、八字、手機同 PWA ===== */
 [hidden]{display:none!important}
-:root{--bg:#ece9f1;--paper:#fcfbfd;--ink:#1d1726;--ink2:#5a5167;--line:#a79fb8;--soft:#dcd7e6;
---accent:#5b3a99;--sel:#e2d9f3;--rel:#eee8f8;
---wx0:#1b7a43;--wx1:#b3261e;--wx2:#8a5a14;--wx3:#56677a;--wx4:#1c5a99}
-@media (prefers-color-scheme:dark){:root{--bg:#141019;--paper:#1d1726;--ink:#efeaf6;--ink2:#b3a9c4;--line:#4a4060;--soft:#2c2438;
---accent:#b79cf0;--sel:#34284e;--rel:#2a2140;
---wx0:#5fd08a;--wx1:#ff8a80;--wx2:#e0b070;--wx3:#b8c4d2;--wx4:#8cbcf2}}
 .page{padding-inline:max(16px,env(safe-area-inset-left)) max(16px,env(safe-area-inset-right));padding-block-end:calc(48px + env(safe-area-inset-bottom))}
 body{-webkit-tap-highlight-color:transparent}
 .brand{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
@@ -250,6 +245,46 @@ table.bz{break-inside:avoid}
 .yn{min-height:0}
 }
 
+/* 外觀選擇器、空白起始畫面、標誌跟主題 */
+.lb{fill:var(--accent)}.lp{fill:var(--paper)}
+.top{align-items:center}
+.look{margin-inline-start:auto}
+.look>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:6px 14px;min-height:40px;background:var(--paper);color:var(--ink);font-size:13px}
+.look>summary::-webkit-details-marker{display:none}
+.look>summary::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--accent)}
+.look[open]>summary{margin-bottom:0}
+.lookbox{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:10px;padding:12px 14px;background:var(--paper);border:1px solid var(--line)}
+.swatches{display:flex;flex-wrap:wrap;gap:8px}
+.sw{position:relative;display:flex;align-items:center;gap:6px;padding:6px 12px;min-height:40px;border:1px solid var(--line);border-radius:999px;background:var(--paper);cursor:pointer;font-size:14px}
+.sw input{position:absolute;opacity:0;pointer-events:none}
+.sw i{display:block;width:16px;height:16px;border-radius:50%}
+.sw.on{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.sw:focus-within{outline:2px solid var(--ink);outline-offset:2px}
+.empty{margin:0;padding:30px 16px;text-align:center;color:var(--ink2);border:1px dashed var(--line);background:var(--paper);line-height:1.8}
+@media (max-width:560px){.look{margin-inline-start:0;width:100%}}
+@media print{.look,.empty{display:none!important}}
+/* 配色主題（由 tools/themes.py 生成） */
+:root[data-theme="gray"]{color-scheme:light;--aux:#1c5a99;--sha:#9a3328;--hl:#1f7a46;--hq:#2a5fb0;--hk:#8f520a;--hj:#b3261e;--hfg:#ffffff;--wx0:#16673a;--wx1:#b3261e;--wx2:#7d5212;--wx3:#4f6073;--wx4:#1c5a99;--bg:#e9ebee;--paper:#fbfbfc;--ink:#1e2227;--ink2:#555c65;--line:#a3aab3;--soft:#d8dce1;--accent:#465362;--sel:#dbe0e6;--rel:#eceff2;--za:var(--ink2)}
+@media (prefers-color-scheme:dark){:root[data-theme="gray"]:not([data-mode="light"]){color-scheme:dark;--aux:#8cbcf2;--sha:#f19a8a;--hl:#5fd08a;--hq:#82b4ff;--hk:#f0b24a;--hj:#ff8a80;--hfg:#0b1512;--wx0:#5fd08a;--wx1:#ff8a80;--wx2:#e0b070;--wx3:#b8c4d2;--wx4:#8cbcf2;--bg:#15171a;--paper:#1e2125;--ink:#eceef0;--ink2:#a9afb7;--line:#444a52;--soft:#2a2e33;--accent:#aab6c4;--sel:#2d343c;--rel:#252a30;--za:var(--ink2)}}
+:root[data-theme="gray"][data-mode="dark"]{color-scheme:dark;--aux:#8cbcf2;--sha:#f19a8a;--hl:#5fd08a;--hq:#82b4ff;--hk:#f0b24a;--hj:#ff8a80;--hfg:#0b1512;--wx0:#5fd08a;--wx1:#ff8a80;--wx2:#e0b070;--wx3:#b8c4d2;--wx4:#8cbcf2;--bg:#15171a;--paper:#1e2125;--ink:#eceef0;--ink2:#a9afb7;--line:#444a52;--soft:#2a2e33;--accent:#aab6c4;--sel:#2d343c;--rel:#252a30;--za:var(--ink2)}
+@media print{:root[data-theme="gray"][data-mode]{color-scheme:light;--aux:#1c5a99;--sha:#9a3328;--hl:#1f7a46;--hq:#2a5fb0;--hk:#8f520a;--hj:#b3261e;--hfg:#ffffff;--wx0:#16673a;--wx1:#b3261e;--wx2:#7d5212;--wx3:#4f6073;--wx4:#1c5a99;--bg:#fff;--paper:#fff;--ink:#000;--ink2:#333;--line:#666;--soft:#bbb;--accent:#465362;--sel:#fff;--rel:#fff;--za:var(--ink2)}}
+:root[data-theme="blue"]{color-scheme:light;--aux:#1c5a99;--sha:#9a3328;--hl:#1f7a46;--hq:#2a5fb0;--hk:#8f520a;--hj:#b3261e;--hfg:#ffffff;--wx0:#16673a;--wx1:#b3261e;--wx2:#7d5212;--wx3:#4f6073;--wx4:#1c5a99;--bg:#e6edf5;--paper:#fafcfe;--ink:#172230;--ink2:#4d5e73;--line:#9db0c6;--soft:#d3dde9;--accent:#2f5f94;--sel:#d6e4f3;--rel:#e8f0f8;--za:var(--ink2)}
+@media (prefers-color-scheme:dark){:root[data-theme="blue"]:not([data-mode="light"]){color-scheme:dark;--aux:#8cbcf2;--sha:#f19a8a;--hl:#5fd08a;--hq:#82b4ff;--hk:#f0b24a;--hj:#ff8a80;--hfg:#0b1512;--wx0:#5fd08a;--wx1:#ff8a80;--wx2:#e0b070;--wx3:#b8c4d2;--wx4:#8cbcf2;--bg:#111821;--paper:#18212c;--ink:#e8eff7;--ink2:#a2b3c7;--line:#3a4b60;--soft:#243040;--accent:#8fb7e8;--sel:#1f3550;--rel:#1b2a3d;--za:var(--ink2)}}
+:root[data-theme="blue"][data-mode="dark"]{color-scheme:dark;--aux:#8cbcf2;--sha:#f19a8a;--hl:#5fd08a;--hq:#82b4ff;--hk:#f0b24a;--hj:#ff8a80;--hfg:#0b1512;--wx0:#5fd08a;--wx1:#ff8a80;--wx2:#e0b070;--wx3:#b8c4d2;--wx4:#8cbcf2;--bg:#111821;--paper:#18212c;--ink:#e8eff7;--ink2:#a2b3c7;--line:#3a4b60;--soft:#243040;--accent:#8fb7e8;--sel:#1f3550;--rel:#1b2a3d;--za:var(--ink2)}
+@media print{:root[data-theme="blue"][data-mode]{color-scheme:light;--aux:#1c5a99;--sha:#9a3328;--hl:#1f7a46;--hq:#2a5fb0;--hk:#8f520a;--hj:#b3261e;--hfg:#ffffff;--wx0:#16673a;--wx1:#b3261e;--wx2:#7d5212;--wx3:#4f6073;--wx4:#1c5a99;--bg:#fff;--paper:#fff;--ink:#000;--ink2:#333;--line:#666;--soft:#bbb;--accent:#2f5f94;--sel:#fff;--rel:#fff;--za:var(--ink2)}}
+:root[data-theme="purple"]{color-scheme:light;--aux:#1c5a99;--sha:#9a3328;--hl:#1f7a46;--hq:#2a5fb0;--hk:#8f520a;--hj:#b3261e;--hfg:#ffffff;--wx0:#16673a;--wx1:#b3261e;--wx2:#7d5212;--wx3:#4f6073;--wx4:#1c5a99;--bg:#ece9f1;--paper:#fcfbfd;--ink:#1d1726;--ink2:#5a5167;--line:#a79fb8;--soft:#dcd7e6;--accent:#5b3a99;--sel:#e2d9f3;--rel:#eee8f8;--za:var(--ink2)}
+@media (prefers-color-scheme:dark){:root[data-theme="purple"]:not([data-mode="light"]){color-scheme:dark;--aux:#8cbcf2;--sha:#f19a8a;--hl:#5fd08a;--hq:#82b4ff;--hk:#f0b24a;--hj:#ff8a80;--hfg:#0b1512;--wx0:#5fd08a;--wx1:#ff8a80;--wx2:#e0b070;--wx3:#b8c4d2;--wx4:#8cbcf2;--bg:#141019;--paper:#1d1726;--ink:#efeaf6;--ink2:#b3a9c4;--line:#4a4060;--soft:#2c2438;--accent:#b79cf0;--sel:#34284e;--rel:#2a2140;--za:var(--ink2)}}
+:root[data-theme="purple"][data-mode="dark"]{color-scheme:dark;--aux:#8cbcf2;--sha:#f19a8a;--hl:#5fd08a;--hq:#82b4ff;--hk:#f0b24a;--hj:#ff8a80;--hfg:#0b1512;--wx0:#5fd08a;--wx1:#ff8a80;--wx2:#e0b070;--wx3:#b8c4d2;--wx4:#8cbcf2;--bg:#141019;--paper:#1d1726;--ink:#efeaf6;--ink2:#b3a9c4;--line:#4a4060;--soft:#2c2438;--accent:#b79cf0;--sel:#34284e;--rel:#2a2140;--za:var(--ink2)}
+@media print{:root[data-theme="purple"][data-mode]{color-scheme:light;--aux:#1c5a99;--sha:#9a3328;--hl:#1f7a46;--hq:#2a5fb0;--hk:#8f520a;--hj:#b3261e;--hfg:#ffffff;--wx0:#16673a;--wx1:#b3261e;--wx2:#7d5212;--wx3:#4f6073;--wx4:#1c5a99;--bg:#fff;--paper:#fff;--ink:#000;--ink2:#333;--line:#666;--soft:#bbb;--accent:#5b3a99;--sel:#fff;--rel:#fff;--za:var(--ink2)}}
+:root[data-theme="green"]{color-scheme:light;--aux:#1c5a99;--sha:#9a3328;--hl:#1f7a46;--hq:#2a5fb0;--hk:#8f520a;--hj:#b3261e;--hfg:#ffffff;--wx0:#16673a;--wx1:#b3261e;--wx2:#7d5212;--wx3:#4f6073;--wx4:#1c5a99;--bg:#e6eee9;--paper:#fafcfb;--ink:#16241d;--ink2:#4a5f53;--line:#9bb2a4;--soft:#d2ded6;--accent:#2f6b4c;--sel:#d5e8dc;--rel:#e7f1ea;--za:var(--ink2)}
+@media (prefers-color-scheme:dark){:root[data-theme="green"]:not([data-mode="light"]){color-scheme:dark;--aux:#8cbcf2;--sha:#f19a8a;--hl:#5fd08a;--hq:#82b4ff;--hk:#f0b24a;--hj:#ff8a80;--hfg:#0b1512;--wx0:#5fd08a;--wx1:#ff8a80;--wx2:#e0b070;--wx3:#b8c4d2;--wx4:#8cbcf2;--bg:#101814;--paper:#18221c;--ink:#e6f0ea;--ink2:#a0b6a8;--line:#384d41;--soft:#232f28;--accent:#8ccfa6;--sel:#1e3a2b;--rel:#1a2c22;--za:var(--ink2)}}
+:root[data-theme="green"][data-mode="dark"]{color-scheme:dark;--aux:#8cbcf2;--sha:#f19a8a;--hl:#5fd08a;--hq:#82b4ff;--hk:#f0b24a;--hj:#ff8a80;--hfg:#0b1512;--wx0:#5fd08a;--wx1:#ff8a80;--wx2:#e0b070;--wx3:#b8c4d2;--wx4:#8cbcf2;--bg:#101814;--paper:#18221c;--ink:#e6f0ea;--ink2:#a0b6a8;--line:#384d41;--soft:#232f28;--accent:#8ccfa6;--sel:#1e3a2b;--rel:#1a2c22;--za:var(--ink2)}
+@media print{:root[data-theme="green"][data-mode]{color-scheme:light;--aux:#1c5a99;--sha:#9a3328;--hl:#1f7a46;--hq:#2a5fb0;--hk:#8f520a;--hj:#b3261e;--hfg:#ffffff;--wx0:#16673a;--wx1:#b3261e;--wx2:#7d5212;--wx3:#4f6073;--wx4:#1c5a99;--bg:#fff;--paper:#fff;--ink:#000;--ink2:#333;--line:#666;--soft:#bbb;--accent:#2f6b4c;--sel:#fff;--rel:#fff;--za:var(--ink2)}}
+:root[data-theme="yellow"]{color-scheme:light;--aux:#1c5a99;--sha:#9a3328;--hl:#1f7a46;--hq:#2a5fb0;--hk:#8f520a;--hj:#b3261e;--hfg:#ffffff;--wx0:#16673a;--wx1:#b3261e;--wx2:#7d5212;--wx3:#4f6073;--wx4:#1c5a99;--bg:#f1ecdd;--paper:#fffdf7;--ink:#28220f;--ink2:#645a3b;--line:#bfb391;--soft:#e4dcc3;--accent:#7a570b;--sel:#f0e3b8;--rel:#f7efd5;--za:var(--ink2)}
+@media (prefers-color-scheme:dark){:root[data-theme="yellow"]:not([data-mode="light"]){color-scheme:dark;--aux:#8cbcf2;--sha:#f19a8a;--hl:#5fd08a;--hq:#82b4ff;--hk:#f0b24a;--hj:#ff8a80;--hfg:#0b1512;--wx0:#5fd08a;--wx1:#ff8a80;--wx2:#e0b070;--wx3:#b8c4d2;--wx4:#8cbcf2;--bg:#1a1710;--paper:#231f15;--ink:#f3ecd9;--ink2:#b9ad8a;--line:#53492f;--soft:#302a1c;--accent:#e2bf62;--sel:#3c3317;--rel:#2f2812;--za:var(--ink2)}}
+:root[data-theme="yellow"][data-mode="dark"]{color-scheme:dark;--aux:#8cbcf2;--sha:#f19a8a;--hl:#5fd08a;--hq:#82b4ff;--hk:#f0b24a;--hj:#ff8a80;--hfg:#0b1512;--wx0:#5fd08a;--wx1:#ff8a80;--wx2:#e0b070;--wx3:#b8c4d2;--wx4:#8cbcf2;--bg:#1a1710;--paper:#231f15;--ink:#f3ecd9;--ink2:#b9ad8a;--line:#53492f;--soft:#302a1c;--accent:#e2bf62;--sel:#3c3317;--rel:#2f2812;--za:var(--ink2)}
+@media print{:root[data-theme="yellow"][data-mode]{color-scheme:light;--aux:#1c5a99;--sha:#9a3328;--hl:#1f7a46;--hq:#2a5fb0;--hk:#8f520a;--hj:#b3261e;--hfg:#ffffff;--wx0:#16673a;--wx1:#b3261e;--wx2:#7d5212;--wx3:#4f6073;--wx4:#1c5a99;--bg:#fff;--paper:#fff;--ink:#000;--ink2:#333;--line:#666;--soft:#bbb;--accent:#7a570b;--sel:#fff;--rel:#fff;--za:var(--ink2)}}
+
 .sec{display:flex;flex-direction:column;gap:8px}
 </style>
 </head>
@@ -257,10 +292,23 @@ table.bz{break-inside:avoid}
 <div class="page">
 <header class="top no-print">
   <div class="brand">
-    <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#4b2a7b"/><g fill="#f3ecff"><rect x="8" y="11" width="48" height="5" rx="2"/><rect x="11" y="18" width="9" height="29"/><rect x="23" y="18" width="9" height="29"/><rect x="47" y="18" width="9" height="29"/><rect x="8" y="49" width="48" height="4" rx="2"/></g><rect x="35" y="18" width="9" height="29" fill="#f0c75e"/></svg>
+    <svg viewBox="0 0 64 64" aria-hidden="true"><rect class="lb" width="64" height="64" rx="14" fill="#4b2a7b"/><g class="lp" fill="#f3ecff"><rect x="8" y="11" width="48" height="5" rx="2"/><rect x="11" y="18" width="9" height="29"/><rect x="23" y="18" width="9" height="29"/><rect x="47" y="18" width="9" height="29"/><rect x="8" y="49" width="48" height="4" rx="2"/></g><rect x="35" y="18" width="9" height="29" fill="#f0c75e"/></svg>
     <h1>紫八匯</h1><span class="en">PURPLE PILLARS</span>
   </div>
   <p class="sub">紫微斗數 × 八字 · 本機運行，生辰資料唔會離開呢部裝置</p>
+  <details class="look" id="look">
+    <summary>外觀</summary>
+    <div class="lookbox">
+      <div class="fld"><span class="lbl">配色</span><div class="swatches" id="themeSw" role="radiogroup" aria-label="配色"></div></div>
+      <div class="fld"><span class="lbl">背景</span>
+        <div class="radios" role="radiogroup" aria-label="背景">
+          <label><input type="radio" name="mode" value="auto">跟隨系統</label>
+          <label><input type="radio" name="mode" value="light">淺色</label>
+          <label><input type="radio" name="mode" value="dark">深色</label>
+        </div>
+      </div>
+    </div>
+  </details>
 </header>
 
 <aside class="install no-print" id="install" hidden>
@@ -290,7 +338,7 @@ table.bz{break-inside:avoid}
     <label class="fld"><span class="lbl">分</span><input id="mi" type="number" min="0" max="59" inputmode="numeric"></label>
     <div class="fld"><span class="lbl">性別</span>
       <div class="radios" role="radiogroup" aria-label="性別">
-        <label><input type="radio" name="sex" value="M" checked>男</label>
+        <label><input type="radio" name="sex" value="M">男</label>
         <label><input type="radio" name="sex" value="F">女</label>
       </div>
     </div>
@@ -338,7 +386,9 @@ table.bz{break-inside:avoid}
   <p class="hint" id="bkHint">記錄只存喺呢個瀏覽器入面，清除瀏覽資料就會冇，所以重要嘅記錄請定期匯出備份。</p>
 </details>
 
-<div class="tabs no-print" role="tablist" aria-label="排盤方式" id="tabs">
+<p class="empty no-print" id="empty">輸入出生日期、時間同性別，撳「排盤」，就會顯示紫微命盤同八字。</p>
+
+<div class="tabs no-print" role="tablist" aria-label="排盤方式" id="tabs" hidden>
   <button class="tab" role="tab" id="tab-zw" type="button" data-tab="zw" aria-selected="true" aria-controls="out">紫微斗數</button>
   <button class="tab" role="tab" id="tab-bz" type="button" data-tab="bz" aria-selected="false" aria-controls="outBz">八字</button>
 </div>
@@ -1166,6 +1216,54 @@ table.bz{break-inside:avoid}
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else g.Bazi = api;
 })(typeof window !== 'undefined' ? window : globalThis);
 
+/* 配色主題同背景（淺色／深色／跟隨系統）。設定記喺 prefs.theme、prefs.mode。 */
+(function () {
+  'use strict';
+  var THEMES = [["gray", "灰", "#7b8794"], ["blue", "藍", "#5b8bc5"], ["purple", "紫", "#8a68c9"], ["green", "綠", "#5fa77f"], ["yellow", "黃", "#d3a93c"]]; // [id, 名稱, 示意色]
+  var de = document.documentElement;
+
+  function syncMeta() {
+    var m = document.querySelector('meta[name="theme-color"]');
+    if (!m) return;
+    var c = getComputedStyle(de).getPropertyValue('--bg').trim();
+    if (c) m.setAttribute('content', c);
+  }
+  function apply(theme, mode) {
+    de.setAttribute('data-theme', theme);
+    de.setAttribute('data-mode', mode);
+    syncMeta();
+  }
+  function ids() { return THEMES.map(function (t) { return t[0]; }); }
+
+  function init(prefs, save) {
+    var theme = ids().indexOf(prefs.theme) >= 0 ? prefs.theme : 'purple';
+    var mode = ['auto', 'light', 'dark'].indexOf(prefs.mode) >= 0 ? prefs.mode : 'auto';
+    var box = document.getElementById('themeSw');
+    box.innerHTML = THEMES.map(function (t) {
+      return '<label class="sw"><input type="radio" name="theme" value="' + t[0] + '"><i style="background:' + t[2] + '"></i><span>' + t[1] + '</span></label>';
+    }).join('');
+    function mark() {
+      Array.prototype.forEach.call(box.querySelectorAll('.sw'), function (l) { l.classList.toggle('on', l.querySelector('input').checked); });
+    }
+    Array.prototype.forEach.call(box.querySelectorAll('input'), function (r) { r.checked = r.value === theme; });
+    Array.prototype.forEach.call(document.querySelectorAll('input[name="mode"]'), function (r) { r.checked = r.value === mode; });
+    mark();
+    document.getElementById('look').addEventListener('change', function (e) {
+      var n = e.target && e.target.name;
+      if (n === 'theme') theme = e.target.value;
+      else if (n === 'mode') mode = e.target.value;
+      else return;
+      prefs.theme = theme; prefs.mode = mode; save(); mark(); apply(theme, mode);
+    });
+    if (window.matchMedia) {
+      var mq = window.matchMedia('(prefers-color-scheme: dark)');
+      if (mq.addEventListener) mq.addEventListener('change', syncMeta);
+    }
+    apply(theme, mode);
+  }
+  window.Theme = { init: init };
+})();
+
 /* 八字分頁嘅畫面。由 ui.js 呼叫：BzView.init(helpers)、BzView.render(inp, bres, err) */
 (function () {
   'use strict';
@@ -1368,8 +1466,8 @@ table.bz{break-inside:avoid}
   var PLACES = [['香港', 114.17, 8], ['澳門', 113.55, 8], ['廣州', 113.26, 8], ['深圳', 114.06, 8], ['北京', 116.41, 8],
     ['上海', 121.47, 8], ['台北', 121.56, 8], ['新加坡', 103.82, 8], ['吉隆坡', 101.69, 8], ['倫敦', -0.13, 0],
     ['溫哥華', -123.12, -8], ['紐約', -74.0, -5], ['悉尼', 151.21, 10]];
-  var SAMPLE = { name: '', cal: 'solar', y: 1983, m: 5, d: 28, leap: false, hh: 9, mi: 30, male: true,
-    tst: false, lon: 114.17, tz: 8, lateZi: 'next', leapRule: 'split', place: '香港' };
+  // 只預設非生辰嘅設定（香港時區等）；生辰、性別一律留空，由使用者填寫
+  var BLANK = { name: '', cal: 'solar', leap: false, tst: false, lon: 114.17, tz: 8, lateZi: 'next', leapRule: 'split', place: '香港' };
 
   function $(id) { return document.getElementById(id); }
   function pad(n) { return (n < 10 ? '0' : '') + n; }
@@ -1404,6 +1502,7 @@ table.bz{break-inside:avoid}
     ['y', 'm', 'd', 'hh', 'mi'].forEach(function (k) {
       if (!isFinite(inp[k]) || Math.floor(inp[k]) !== inp[k]) throw new RangeError('請填寫完整嘅日期同時間（要係整數）');
     });
+    if (!radio('sex')) throw new RangeError('請揀性別');
     if (inp.y < 1900 || inp.y > 2099) throw new RangeError('年份只支援 1900 至 2099');
     if (inp.m < 1 || inp.m > 12) throw new RangeError('月份要喺 1 至 12 之間');
     if (inp.d < 1 || inp.d > 31) throw new RangeError('日要喺 1 至 31 之間');
@@ -1420,13 +1519,15 @@ table.bz{break-inside:avoid}
   }
 
   function fillForm(inp) {
-    inp = Object.assign({}, SAMPLE, inp || {});
+    inp = Object.assign({}, BLANK, inp || {});
+    function v(x) { return x === undefined || x === null ? '' : x; }
     $('name').value = inp.name || '';
     setRadio('cal', inp.cal);
-    $('y').value = inp.y; $('m').value = inp.m; $('d').value = inp.d;
+    $('y').value = v(inp.y); $('m').value = v(inp.m); $('d').value = v(inp.d);
     $('leap').checked = !!inp.leap;
-    $('hh').value = inp.hh; $('mi').value = inp.mi;
-    setRadio('sex', inp.male ? 'M' : 'F');
+    $('hh').value = v(inp.hh); $('mi').value = v(inp.mi);
+    if (inp.male === true || inp.male === false) setRadio('sex', inp.male ? 'M' : 'F');
+    else Array.prototype.forEach.call(document.querySelectorAll('input[name="sex"]'), function (r) { r.checked = false; });
     $('tst').checked = !!inp.tst;
     $('lon').value = inp.lon; $('tz').value = inp.tz;
     $('place').value = PLACES.some(function (p) { return p[0] === inp.place; }) ? inp.place : '自訂';
@@ -1559,6 +1660,7 @@ table.bz{break-inside:avoid}
     $('patSec').hidden = !prefs.showPat;
     renderPatterns();
     select(c.ming);
+    $('empty').hidden = true; $('tabs').hidden = false;
     setTab(prefs.tab);
   }
 
@@ -1569,7 +1671,6 @@ table.bz{break-inside:avoid}
     hideErr();
     var inp, res;
     try { inp = readForm(); res = E.compute(inp); } catch (e) { showErr(e.message || '資料有誤'); return null; }
-    prefs.last = inp; savePrefs();
     var bres = null, berr = '';
     try { bres = Z.compute(inp, res.birth); } catch (e) { berr = e.message || '資料有誤'; }
     render(res, inp);
@@ -1679,11 +1780,13 @@ table.bz{break-inside:avoid}
 
   /* ---------- 事件 ---------- */
   function init() {
+    if (prefs.last !== undefined) { delete prefs.last; savePrefs(); } // 舊版會記住上次輸入，而家唔再留低客人資料
+    window.Theme.init(prefs, savePrefs);
     initPlaces();
     window.BzView.init({ prefs: prefs, savePrefs: savePrefs, esc: esc, pad: pad });
     buildPset();
     $('showPat').checked = !!prefs.showPat;
-    fillForm(prefs.last && typeof prefs.last === 'object' ? prefs.last : SAMPLE);
+    fillForm(null);
     refreshRecs();
 
     $('f').addEventListener('submit', function (e) { e.preventDefault(); run(); });
@@ -1721,12 +1824,11 @@ table.bz{break-inside:avoid}
       var c = e.target.closest ? e.target.closest('.cell') : null;
       if (c && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); select(+c.getAttribute('data-b')); }
     });
-    run();
   }
   init();
 })();
 
-document.getElementById('appVer').textContent='c30afba60a';
+document.getElementById('appVer').textContent='d27b31a0bb';
 /* PWA：安裝提示、離線快取（service worker）註冊同更新提示。只喺 index.html 版本使用。 */
 (function () {
   'use strict';

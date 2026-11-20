@@ -1,5 +1,5 @@
 /* 紫八匯 service worker：預先快取所有檔案，之後離線都開到。版本號 = 內容雜湊，內容一變就會更新。 */
-var VERSION = 'c30afba60a';
+var VERSION = 'd27b31a0bb';
 var CACHE = 'pp-' + VERSION;
 var ASSETS = ["./", "./index.html", "./manifest.webmanifest", "./icons/apple-touch-icon.png", "./icons/favicon.svg", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/icon-maskable-512.png"];
 
