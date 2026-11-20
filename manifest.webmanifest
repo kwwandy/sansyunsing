@@ -1,0 +1,17 @@
+{
+  "id": "./",
+  "name": "紫八匯 Purple Pillars",
+  "short_name": "紫八匯",
+  "description": "紫微斗數同八字排盤，離線可用，生辰資料只留喺你部機。",
+  "lang": "zh-Hant",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ece9f1",
+  "theme_color": "#4b2a7b",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
